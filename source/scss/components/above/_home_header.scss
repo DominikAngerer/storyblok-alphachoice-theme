@@ -1,0 +1,31 @@
+.home_header {
+  margin: 0 auto;
+  height: 500px;
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+
+.home_header__headline {
+  padding-top: 50px;
+  font-size: 90px;
+  line-height: 70px;
+  font-family: $secondary-font; 
+}
+
+.home_header__sub p {
+  font-size: 26px;
+  font-family: $secondary-font;
+  em {
+    color: $base-heading-color;
+    font-style: normal;
+    display: inline-block;
+    line-height: 30px;
+    &:after {
+      content: '';
+      transform: translateX(30%); 
+      display:block;
+      border-bottom: 4px solid $base-heading-color;
+    }
+  }
+}

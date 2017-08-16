@@ -1,0 +1,13 @@
+{{blok._editable}}
+<section class="home_header" style="background-image:url('{{blok.background}}')">
+  <div class="uk-container uk-container-center">
+    <div class="uk-grid">
+      <div class="uk-width-medium-1-2 uk-margin-top">
+        <h1 class="home_header__headline">{{blok.headline|replace: ' ', '<br>'}}</h1>
+        <div class="home_header__sub">
+          {{blok.subheadline|markdown}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

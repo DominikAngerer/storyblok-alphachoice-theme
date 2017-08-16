@@ -1,0 +1,37 @@
+.footer {
+  background: #000;
+  padding-top: 95px;
+  border-top: 1px solid $text-muted;
+  h1, h2, h3, h4, h5 {
+    color: #fff;
+  }
+}
+
+.footer_help {
+  color: $text-muted;
+}
+
+.footer_social {
+  color: $text-muted;
+  padding-bottom: 40px;
+  li {
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    padding-right: 20px;
+    color: $text-muted;
+    svg {
+      margin-right: 5px;
+      font-size: 1.5em;
+    }
+  }
+}
+
+.footer_legal {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  * { 
+    color: $text-muted;
+  }
+}

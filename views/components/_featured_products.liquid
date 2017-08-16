@@ -1,0 +1,35 @@
+{% set products from stories starts_with:'products', per_page: 4 %}
+<hr>
+<section class="featured_products uk-margin-large">
+  <div class="uk-container uk-container-center">
+    <p class="text--muted">{{blok.above}}</p>
+    <h2>{{blok.headline}}</h2>
+    <div class="uk-grid uk-grid-small">
+      
+      <div class="uk-push-2-3 uk-width-medium-1-3">
+
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for product in products.data %}
+            <div class="swiper-slide">
+              <a class="uk-display-block" href="/{{product.full_slug}}"><img src="{{product.content.featured_image}}" alt="{{product.name}}"></a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="uk-pull-1-3 uk-width-medium-2-3">
+        <ul class="uk-grid uk-grid-small">
+          {% for product in products.data %}
+          <li class="uk-width-medium-1-2">
+            {% include 'product_card' with product: product %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div> 
+    
+    </div>
+  </div>
+</section>

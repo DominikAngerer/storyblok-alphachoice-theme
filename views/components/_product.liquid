@@ -1,0 +1,57 @@
+<article class="product">
+
+  <div class="product__detail uk-clearfix"> 
+    <div class="product__images">
+      <div class="uk-grid uk-grid-collapse">
+        <div class="uk-width-1-1 uk-width-medium-1-2 uk-width-xlarge-1-1 uk-hidden-small">
+          <img class="uk-width-1-1" src="{{story.content.front_image| resize:'588x376'}}" alt="">
+        </div>
+        <div class="uk-width-1-1 uk-width-medium-1-2 uk-width-xlarge-1-1">
+          <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for detail_image in story.content.detail_images %}
+            <div class="swiper-slide">
+              <img class="uk-width-1-1" src="{{detail_image.image | resize:'588x376'}}" alt="">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+        </div>
+    </div>
+    
+    <div class="uk-margin-large-top product__content uk-container uk-container-center">
+      <div class="uk-grid uk-grid-collapse">
+        <div class="uk-width-medium-1-2">
+          <h1 class="product__title">{{story.content.detail_title}}</h1>
+          {% if story.content.special_price != blank %}<div class="product__regular_price">{{story.content.price}}</div>{% endif %}
+          <div class="product__price">{{story.content.special_price|default:story.content.price}}</div>
+          <div class="product__versions">
+            <div class="uk-margin-top text--muted">{{'product-your-style'|label:'de-labels'}}</div>
+            <ul>
+              <li>Black & White</li>
+            </ul>
+          </div>
+        </div>
+        <div class="uk-width-medium-1-2">
+          <div class="product__description">
+          {% if story.content.description != blank %}
+            {{story.content.description|markdown}}
+          {% endif %}
+          </div>
+        </div>
+        <div class="uk-width-1-1 uk-position-relative">
+          <div class="product__actions_helper"></div>
+          <div class="product__actions">
+            <div class="uk-grid uk-grid-collapse">
+              <button class="button button--dark uk-width-1-2">Size</button>
+              <button class="button button--highlight uk-width-1-2">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</article>
+{% include 'random_products' %}  

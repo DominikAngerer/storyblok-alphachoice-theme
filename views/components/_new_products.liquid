@@ -1,0 +1,14 @@
+<section class="new_products uk-margin-large">
+  <div class="uk-container uk-container-center">
+    <p class="text--muted">{{blok.above}}</p>
+    <h2>{{blok.headline}}</h2>
+    <ul class="uk-grid uk-grid-small">
+      {% set products from stories starts_with:'products', per_page: 3 %}
+      {% for product in products.data %}
+      <li class="uk-width-medium-1-3">
+        {% include 'product_card' with product: product %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

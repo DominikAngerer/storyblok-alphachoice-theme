@@ -1,0 +1,26 @@
+.product_card {
+  padding-bottom: 40px;
+}
+
+.product_card__headline {
+  padding: 0px;
+  margin: 0px;
+  font-family: $primary-font;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.product_card__price {
+  color: $text-muted;
+}
+
+.product_card__image {
+  background: #F8F8F8; 
+  position: relative;
+  
+  img {
+    display:block;
+    margin: 0 auto;
+  }
+} 
+

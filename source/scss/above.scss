@@ -1,0 +1,15 @@
+@import '_variables.scss';
+
+// NODE MODULES
+@import 'node_modules/uikit/dist/scss/uikit-mixins';
+@import 'node_modules/uikit/dist/scss/uikit-variables';
+@import 'node_modules/uikit/dist/scss/core/utility';
+@import 'node_modules/uikit/dist/scss/core/base';
+@import 'node_modules/uikit/dist/scss/core/grid';
+@import 'node_modules/uikit/dist/scss/core/list';
+@import 'node_modules/uikit/dist/scss/core/text';
+
+@import 'node_modules/swiper/dist/css/swiper';
+
+@import 'components/elements/*.scss';
+@import 'components/above/**/*.scss';

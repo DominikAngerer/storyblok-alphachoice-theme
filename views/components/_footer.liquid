@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="uk-container uk-container-center">
+    <div class="uk-grid">
+      <div class="uk-width-medium-1-2">
+        <p class="text--muted">{{ 'footer-follow-us' | label:'de-labels' }}</p>
+        <h2>{{ 'footer-social-media-stuff' | label:'de-labels'}}</h2>
+        <ul class="uk-list footer_social">
+          <li><a target="_blank" href="{{global.content.facebook}}">{% include 'icon' with type: 'facebook' %} facebook</a></li>
+          <li><a target="_blank" href="{{global.content.instagram}}">{% include 'icon' with type: 'instagram' %} instagram</a></li>
+          <li><a target="_blank" href="{{global.content.youtube}}">{% include 'icon' with type: 'youtube' %} youtube</a></li>
+          <li><a target="_blank" href="{{global.content.amazon}}">{% include 'icon' with type: 'amazon' %} amazon</a></li>
+        </ul>
+      </div>
+      <div class="uk-width-medium-1-2 footer_help">
+        <p class="text--muted">{{ 'footer-questions-or-not' | label:'de-labels'}}</p>
+        <h2>{{ 'footer-happy-with' | label:'de-labels'}}</h2>
+        <p><a href="tel:+436641013569">{{global.content.contact}}</a><span class="uk-display-inline-block uk-margin-left">{{ 'footer-we-will-help' | label:'de-labels'}}</span></p>
+      </div>
+    </div>
+    <hr>
+    <div class="uk-grid footer_legal">
+      <nav class="uk-push-1-2 uk-width-medium-1-2 uk-text-right">
+        <a class="uk-display-inline-block uk-margin-large-right" href="{{global.content.agb|url}}">AGB</a>
+        <a class="uk-display-inline-block " href="{{global.content.imprint|url}}">Imprint</a>
+      </nav>
+      <div class="uk-pull-1-2 uk-width-medium-1-2">&copy; Alpha Choice 2017</div>
+    </div>
+  </div>
+</footer>
