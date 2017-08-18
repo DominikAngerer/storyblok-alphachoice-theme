@@ -111,7 +111,7 @@
   "url": "/{{story.full_slug}}"
   "price": {{story.content.special_price|replace:',','.'}},
   "priceCurrency": "{{global.content.price_currency}}",
-  "brand": "{{global.content.brand_name}}"
+  "brand": "{{global.content.brand_name|default:'Alphachoice'}}"
 }
 </script>
 
