@@ -1,0 +1,16 @@
+{%- spaceless -%}
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.sitemaps.org/schemas/sitemap-image/1.1" xmlns:video="http://www.sitemaps.org/schemas/sitemap-video/1.1">
+  <url><loc>https://www.alphachoice.de</loc></url>
+  <url><loc>https://www.alphachoice.de/imprint</loc></url>
+  {% set products from stories starts_with:'products', per_page: 100 %}
+  {% for product in products.data %}
+    {% for product_variation in product.content.variations %} 
+      {% if product_variation.size == 'large' or product_variation.size == 'small' %}
+      <url><loc>https://www.alphachoice.de/{{product.full_slug}}?size={{product_variation.size}}</loc></url>
+      {% else %}
+      <url><loc>https://www.alphachoice.de/{{product.full_slug}}</loc></url>
+      {% endif %}   
+    {% endfor %}
+  {% endfor %}
+</urlset>
+{%- endspaceless -%}

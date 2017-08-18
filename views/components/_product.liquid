@@ -73,9 +73,11 @@
                   {% for product_variation in story.content.variations %} 
                     <option 
                       value="{{product_variation.amazon_url}}" 
-                      {% if params.size == blank and product_variation.size == 'medium' or product_variation.size == 'flexfit' %}selected{% endif %}
+                      {% if params.size == blank and product_variation.size == 'medium' %}selected{% endif %}
+                      {% if params.size == blank and product_variation.size == 'flexfit' %}selected{% endif %}
                       {% if params.size != 'small' and params.size != 'large' %}
-                        {% if params.size != blank and product_variation.size == 'medium' or product_variation.size == 'flexfit' %}selected{% endif %}
+                        {% if params.size != blank and product_variation.size == 'medium' %}selected{% endif %}
+                        {% if params.size != blank and product_variation.size == 'flexfit' %}selected{% endif %}
                       {% endif %}
                       {% if product_variation.size == params.size %}selected{% endif %}>
                       {{product_variation.size}}
@@ -84,7 +86,8 @@
                   </select>
                 </div>
               </div>
-              <a target="_blank" rel="noopener" href="{{story.content.variations[1].amazon_url}}" class="button button--highlight uk-link-reset uk-width-1-2" data-amazon-link>{{'add-to-amazon-cart'|label:'de-labels'}}</a>
+              <a target="_blank" rel="noopener" href="{{story.content.variations[1].amazon_url | default: story.content.variations[0].amazon_url}}" class="button button--highlight uk-link-reset uk-width-1-2" data-amazon-link>{{'add-to-amazon-cart'|label:'de-labels'}}</a>
+
             </div>
           </div>
         </div>
