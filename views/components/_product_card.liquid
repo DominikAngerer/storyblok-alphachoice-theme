@@ -1,7 +1,7 @@
 {{product.content._editable}}
 <a class="product_card uk-display-block uk-link-reset" href="/{{product.full_slug}}">
   <div class="product_card__image">
-    <img src="{{product.content.front_image|resize:'393x278'}}" alt="{{product.name}}">
+    <img class="uk-width-1-1 lazyload" src="{{product.content.front_image|resize:'39x27'}}" alt="{{product.name}}" data-src="{{product.content.front_image|resize:'393x278'}}">
   </div>
   <h3 class="product_card__headline">{{product.name}}</h3>
   <p class="product_card__price">{{product.content.price}}</p>

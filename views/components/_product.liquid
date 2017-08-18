@@ -4,14 +4,17 @@
     <div class="product__images">
       <div class="uk-grid uk-grid-collapse">
         <div class="uk-width-1-1 uk-width-medium-1-2 uk-width-xlarge-1-1 uk-hidden-small">
-          <img class="uk-width-1-1" src="{{story.content.front_image| resize:'588x376'}}" alt="">
+          <img class="uk-width-1-1 lazyload" src="{{story.content.front_image| resize:'58x37'}}" data-src="{{story.content.front_image| resize:'588x376'}}" alt="{{ story.name }} - Front Image">
         </div>
         <div class="uk-width-1-1 uk-width-medium-1-2 uk-width-xlarge-1-1">
           <div class="swiper-container">
           <div class="swiper-wrapper">
             {% for detail_image in story.content.detail_images %}
             <div class="swiper-slide">
-              <img class="uk-width-1-1" src="{{detail_image.image | resize:'588x376'}}" alt="">
+              <img class="uk-width-1-1" src="{{detail_image.image | resize:'588x376'}}" alt="{{ story.name }} - Featured Image">
+              {% if forloop.first == false %}
+                <img class="uk-width-1-1 lazyload" src="{{detail_image.image | resize:'58x37'}}" data-src="{{detail_image.image | resize:'588x376'}}" alt="{{ story.name }} - Featured Image">
+              {% endif %}
             </div>
             {% endfor %}
           </div>

@@ -36,6 +36,7 @@
   {% if story.content.meta.twitter_description != blank %}
   <meta name="twitter:description" content="{{ story.content.meta.twitter_description }}">
   {% endif %}
+  <meta name="theme-color" content="#fff">
   
   {% include 'font' %}
 
@@ -81,6 +82,8 @@
 
     </script>
   {% endif %}
+
+  <script src="{{'assets/js/sw-companion.js' |asset_url }}" data-service-worker="/service-worker.js"></script>
 
   <script>
   /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */

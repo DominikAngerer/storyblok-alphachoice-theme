@@ -12,7 +12,7 @@
           <div class="swiper-wrapper">
             {% for product in products.data %}
             <div class="swiper-slide">
-              <a class="featured_products__mega_image" href="/{{product.full_slug}}"><img src="{{product.content.featured_image}}" alt="{{product.name}}"></a>
+              <a class="featured_products__mega_image" href="/{{product.full_slug}}"><img class="uk-width-1-1 lazyload" src="{{product.content.featured_image|resize:'39x68'}}" data-src="{{product.content.featured_image|resize:'393x686'}}" alt="{{product.name}}"></a>
             </div>
             {% endfor %}
           </div>

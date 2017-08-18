@@ -1,6 +1,7 @@
 dependencies:
   babel-core: 6.25.0
   jquery: 3.2.1
+  lazysizes: 4.0.0-rc3
   sw-toolbox: 3.6.0
   swiper: 3.4.2
   uikit: 2.27.4
@@ -2403,6 +2404,9 @@ packages:
   /lazy-cache/1.0.4:
     resolution:
       integrity: sha1-odePw6UEdMuAhF07O24dpJpEbo4=
+  /lazysizes/4.0.0-rc3:
+    resolution:
+      integrity: sha512-FOvVLJ1qWJMuUyDu0z3aLdi4tffW4+W052GIqwHirUhzRJpsMfMOggKEeqsPMy8UeqvDYDzlQyK3DDFZvQpWQw==
   /lcid/1.0.0:
     dependencies:
       invert-kv: 1.0.0
@@ -4586,6 +4590,7 @@ specifiers:
   gulp-watch: ^4.3.11
   gulp-webpack: ^1.5.0
   jquery: ^3.1.1
+  lazysizes: ^4.0.0-rc3
   sw-toolbox: ^3.6.0
   swiper: ^3.4.2
   uikit: ^2.27.2

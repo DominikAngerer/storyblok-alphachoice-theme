@@ -6,3 +6,5 @@ import ProductActionController from './ProductActionController.js'
 FeaturedProductsSwiper.init();
 ProductDetailSwiper.init();
 ProductActionController.init();
+
+import './LazySizes'
