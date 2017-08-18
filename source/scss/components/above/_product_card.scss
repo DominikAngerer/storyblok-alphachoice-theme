@@ -17,10 +17,17 @@
 .product_card__image {
   background: #F8F8F8; 
   position: relative;
+  overflow: hidden;
   
   img {
-    display:block;
+    display: block;
     margin: 0 auto;
+    transition: transform 500ms ease;
+  }
+  &:hover {
+    img {
+      transform: scale(1.075);
+    }
   }
 } 
 

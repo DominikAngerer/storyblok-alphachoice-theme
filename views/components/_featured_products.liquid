@@ -12,7 +12,7 @@
           <div class="swiper-wrapper">
             {% for product in products.data %}
             <div class="swiper-slide">
-              <a class="uk-display-block" href="/{{product.full_slug}}"><img src="{{product.content.featured_image}}" alt="{{product.name}}"></a>
+              <a class="featured_products__mega_image" href="/{{product.full_slug}}"><img src="{{product.content.featured_image}}" alt="{{product.name}}"></a>
             </div>
             {% endfor %}
           </div>

@@ -1,0 +1,13 @@
+.featured_products__mega_image {
+  overflow: hidden;
+  display: block;
+  img {
+    display: block;
+    transition: transform 500ms ease;
+  }
+  &:hover {
+    img {
+      transform: scale(1.075);
+    }
+  }
+}

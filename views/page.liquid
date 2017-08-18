@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alphachoice - {{ story.name }}</title>
 
+  <link rel="canonical" href="{{ canonical }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %}?size={{params.size}}{% endif %}">
+  
   {% include 'font' %}
 
   {% if proxy_mode %}

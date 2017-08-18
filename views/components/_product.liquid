@@ -1,5 +1,5 @@
+{{story.content._editable}}
 <article class="product">
-
   <div class="product__detail uk-clearfix"> 
     <div class="product__images">
       <div class="uk-grid uk-grid-collapse">
@@ -17,20 +17,42 @@
           </div>
         </div>
       </div>
-        </div>
+      </div>
     </div>
     
     <div class="uk-margin-large-top product__content uk-container uk-container-center">
       <div class="uk-grid uk-grid-collapse">
         <div class="uk-width-medium-1-2">
           <h1 class="product__title">{{story.content.detail_title}}</h1>
-          {% if story.content.special_price != blank %}<div class="product__regular_price">{{story.content.price}}</div>{% endif %}
-          <div class="product__price">{{story.content.special_price|default:story.content.price}}</div>
+          {% if story.content.special_price != blank %}<div class="product__regular_price">{{global.content.price_currency}} {{story.content.price}}</div>{% endif %}
+          <div class="product__price">{{global.content.price_currency}} {{story.content.special_price|default:story.content.price}}</div>
           <div class="product__versions">
             <div class="uk-margin-top text--muted">{{'product-your-style'|label:'de-labels'}}</div>
-            <ul>
-              <li>Black & White</li>
+            <ul class="uk-list">
+              <li>
+                <div class=" product__color">
+                  <span class="product__color_code" style="background:{{story.content.primary_color}}">
+                    <span class="product__color_secondary" style="background:{{story.content.secondary_color}}"></span>
+                  </span>
+                  <span class="product__color_name">{{story.content.color_name}}</span>
+                </div>
+              </li>
             </ul>
+            <table class="product__available_sizes">
+              <tr><th ><div class="uk-margin-bottom text--muted">Available Sizes</div></th></tr>
+              {% for product_variation in story.content.variations %} 
+              <tr class="product__available_size">
+                <td>
+                  {% if forloop.first == false %} / {% endif %}
+                  {% if product_variation.size == 'large' or product_variation.size == 'small' %}
+                  <a class="uk-link-reset" href="{{canonical}}?size={{product_variation.size}}">{{product_variation.size|capitalize}}</a>
+                  {% else %}
+                  <a class="uk-link-reset" href="{{canonical}}">{{product_variation.size|capitalize}}</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}  
+            </table>
           </div>
         </div>
         <div class="uk-width-medium-1-2">
@@ -44,14 +66,47 @@
           <div class="product__actions_helper"></div>
           <div class="product__actions">
             <div class="uk-grid uk-grid-collapse">
-              <button class="button button--dark uk-width-1-2">Size</button>
-              <button class="button button--highlight uk-width-1-2">Add to cart</button>
+              <div class="uk-width-1-2">
+                <div class="select select--dark">
+                  <label for="sizes">Size:</label>
+                  <select id="sizes" class="text--muted">
+                  {% for product_variation in story.content.variations %} 
+                    <option 
+                      value="{{product_variation.amazon_url}}" 
+                      {% if params.size == blank and product_variation.size == 'medium' or product_variation.size == 'flexfit' %}selected{% endif %}
+                      {% if params.size != 'small' and params.size != 'large' %}
+                        {% if params.size != blank and product_variation.size == 'medium' or product_variation.size == 'flexfit' %}selected{% endif %}
+                      {% endif %}
+                      {% if product_variation.size == params.size %}selected{% endif %}>
+                      {{product_variation.size}}
+                    </option>
+                  {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <a target="_blank" rel="noopener" href="{{story.content.variations[1].amazon_url}}" class="button button--highlight uk-link-reset uk-width-1-2" data-amazon-link>{{'add-to-amazon-cart'|label:'de-labels'}}</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+<script type="application/ld+json">
+{
+  "@type": "ProductInfo",
+  "@id": "{{ story.id }}{%- if params.size != blank and params.size == 'small' or params.size == 'large' -%}-{{params.size}}{% endif %}",
+  "image": "{{ story.content.front_image }}",
+  "name": "{{ story.name }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %} - {{params.size| capitalize}}{% endif %}",
+  {%- for product_variation in story.con tent.variations -%} 
+    {%- if product_variation.size == params.size %}"sku": "{{ product_variation.sku }}",{%- endif -%}
+  {%- endfor -%}
+  "color": "{{story.content.color_name}}",
+  "url": "/{{story.full_slug}}"
+  "price": {{story.content.special_price|replace:',','.'}},
+  "priceCurrency": "{{global.content.price_currency}}",
+  "brand": "{{global.content.brand_name}}"
+}
+</script>
 
 </article>
-{% include 'random_products' %}  
+{% include 'random_products' %}
