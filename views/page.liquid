@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alphachoice">
   {% if story.content.meta.og_image != blank %}
-  <meta property="og:image" content="{{ story.content.meta.og_image }}">
+  <meta property="og:image" content="{{ story.content.meta.og_image | resize: '1200x630' }}">
   {% endif %}
   {% if story.content.meta.og_title != blank %}
   <meta property="og:title" content="{{ story.content.meta.og_title }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %} {{params.size}}{% endif %}">
@@ -31,7 +31,7 @@
   <meta name="twitter:title" content="{{ story.content.meta.twitter_title }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %} {{params.size}}{% endif %}">
   {% endif %}
   {% if story.content.meta.twitter_image != blank %}
-  <meta name="twitter:image" content="{{ story.content.meta.twitter_image }}">
+  <meta name="twitter:image" content="{{ story.content.meta.twitter_image | resize: '1200x628' }}">
   {% endif %}
   {% if story.content.meta.twitter_description != blank %}
   <meta name="twitter:description" content="{{ story.content.meta.twitter_description }}">
@@ -101,6 +101,30 @@
 
     ga('create', 'UA-104904871-1', 'auto');
     ga('send', 'pageview');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Alphachoice",
+    "alternateName": "Alphachoice Fitness & Sports Products",
+    "url": "https://www.alphachoice.de"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Alphachoice",
+    "url": "https://www.alphachoice.de",
+    "sameAs": [
+      "https://www.facebook.com/alphachoicefitness/",
+      "https://www.instagram.com/alphachoice_fitness/",
+      "https://www.amazon.de/s/ref=bl_dp_s_web_0?ie=UTF8&field-keywords=Alphachoice"
+    ]
+  }
   </script>
 
 </body>

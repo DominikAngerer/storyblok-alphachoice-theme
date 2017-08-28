@@ -43,7 +43,7 @@
               </li>
             </ul>
             <table class="product__available_sizes">
-              <tr><th ><div class="uk-margin-bottom text--muted">Available Sizes</div></th></tr>
+              <tr><th ><div class="uk-margin-bottom text--muted">{{ 'available-sizes' | label:'de-labels'}}</div></th></tr>
               {% for product_variation in story.content.variations %} 
               <tr class="product__available_size">
                 <td>
@@ -70,9 +70,9 @@
           <div class="product__actions_helper"></div>
           <div class="product__actions">
             <div class="uk-grid uk-grid-collapse">
-              <div class="uk-width-1-2">
+              <div class="uk-width-medium-1-2">
                 <div class="select select--dark">
-                  <label for="sizes">Size:</label>
+                  <label for="sizes">{{ 'size' | label:'de-labels'}}</label>
                   <select id="sizes" class="text--muted">
                   {% for product_variation in story.content.variations %} 
                     <option 
@@ -90,7 +90,7 @@
                   </select>
                 </div>
               </div>
-              <a target="_blank" rel="noopener" href="{{story.content.variations[1].amazon_url | default: story.content.variations[0].amazon_url}}" class="button button--highlight uk-link-reset uk-width-1-2" data-amazon-link>{{'add-to-amazon-cart'|label:'de-labels'}}</a>
+              <a target="_blank" rel="noopener" href="{{story.content.variations[1].amazon_url | default: story.content.variations[0].amazon_url}}" class="button button--highlight uk-link-reset uk-width-medium-1-2" data-amazon-link>{{'add-to-amazon-cart'|label:'de-labels'}}</a>
 
             </div>
           </div>
@@ -100,18 +100,32 @@
   </div>
 <script type="application/ld+json">
 {
-  "@type": "ProductInfo",
+  "@context": "https://schema.org/",
+  "@type": "Product",
   "@id": "{{ story.id }}{%- if params.size != blank and params.size == 'small' or params.size == 'large' -%}-{{params.size}}{% endif %}",
-  "image": "{{ story.content.front_image }}",
+  "image": "https:{{ story.content.front_image }}",
   "name": "{{ story.name }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %} - {{params.size| capitalize}}{% endif %}",
   {%- for product_variation in story.con tent.variations -%} 
     {%- if product_variation.size == params.size %}"sku": "{{ product_variation.sku }}",{%- endif -%}
   {%- endfor -%}
   "color": "{{story.content.color_name}}",
-  "url": "/{{story.full_slug}}"
-  "price": {{story.content.special_price|replace:',','.'}},
-  "priceCurrency": "{{global.content.price_currency}}",
-  "brand": "{{global.content.brand_name|default:'Alphachoice'}}"
+  "url": "{{ canonical }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %}?size={{params.size}}{% endif %}",
+  "description": "{{ story.content.meta.description }}",
+  "brand": {
+    "@type": "Thing",
+    "name": "{{global.content.brand_name|default:'Alphachoice'}}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "price": "{{story.content.special_price|replace:',','.'}}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "{{global.content.brand_name|default:'Alphachoice'}}"
+    }
+  }
 }
 </script>
 

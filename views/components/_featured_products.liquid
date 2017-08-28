@@ -17,7 +17,7 @@
             {% endfor %}
           </div>
         </div>
-
+        <div class="uk-visible-small uk-margin-top"></div>
       </div>
       
       <div class="uk-pull-1-3 uk-width-medium-2-3">
@@ -33,3 +33,35 @@
     </div>
   </div>
 </section>
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org",
+  "@type":"ItemList",
+  "itemListElement":[
+  {%- assign i = 1 -%}
+  {%- for product in products.data -%}
+      {%- for product_variation in product.content.variations -%} 
+        {%- if product_variation.size == 'large' or product_variation.size == 'small' -%}{
+            "@type":"ListItem",
+            "position":{{i}},
+            "url":"https://www.alphachoice.de/{{product.full_slug}}?size={{product_variation.size}}"
+            {%- assign i = i | plus: 1 --%}
+        {%- else -%}{
+            "@type":"ListItem",
+            "position":{{i}},
+            "url":"https://www.alphachoice.de/{{product.full_slug}}"
+            {%- assign i = i | plus: 1 --%}
+        {%- endif -%}  
+        {%- if forloop.last == false -%}
+        }, 
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if forloop.last == false -%}
+      }, 
+      {%- else -%}
+      }
+      {%- endif -%}
+  {%- endfor -%}
+  ]
+}
+</script>
