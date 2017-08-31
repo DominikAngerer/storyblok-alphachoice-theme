@@ -1,0 +1,5 @@
+{{blok._editable}}
+<div class="image">
+  {% assign size = blok.size | append: 'x0' %}
+  <img src="{{blok.image|resize: size}}" alt="{{blok.alt}}">
+</div>

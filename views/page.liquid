@@ -11,6 +11,7 @@
   <meta name="google-site-verification" content="E8xPmUKXeu7zCW3vd_kzz9pcCzOe9qjEUDaGG4LTdmE" />
 
   <link rel="canonical" href="{{ canonical }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %}?size={{params.size}}{% endif %}">
+  <meta property="og:url" content="{{ canonical }}{% if params.size != blank and params.size == 'small' or params.size == 'large' %}?size={{params.size}}{% endif %}">
 
   {% if story.content.meta.description != blank %}
   <meta name="description" content="{{ story.content.meta.description }}">
@@ -126,6 +127,23 @@
     ]
   }
   </script>
+  <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '165511180690038');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=165511180690038&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 
 </body>
 </html>
