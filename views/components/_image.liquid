@@ -1,5 +1,5 @@
 {{blok._editable}}
-<div class="image">
+<div class="image" style="{% if blok.margin != blank %}margin:{{blok.margin}}{% endif %}{% if blok.padding != blank %}padding:{{blok.padding}}{% endif %}">
   {% assign size = blok.size | append: 'x0' %}
   <img src="{{blok.image|resize: size}}" alt="{{blok.alt}}">
 </div>

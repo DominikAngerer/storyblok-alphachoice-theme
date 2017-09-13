@@ -1,0 +1,41 @@
+{{blok._editable}}
+<section class="uk-margin-large-top">
+  <div class="uk-container uk-container-center">
+    {% for item in blok.home_header %}
+      {% include item.component with blok: item %}
+    {% endfor %}
+    <div class="uk-grid uk-margin-large-top">
+      <div class="uk-width-medium-3-4">
+        <ul class="uk-grid">
+        {% set blogitems from stories starts_with:'blog/', per_page: 99, filter_by:'{"component":"blog_entry"}' %}
+        {% for blog_entry in blogitems.data %}
+          <li class="uk-width-medium-1-2 uk-margin-large-bottom">
+            {{blog_entry.content._editable}}
+            <a class="uk-display-block uk-link-reset" href="/{{blog_entry.full_slug}}">
+              <img class="lazyload" src="{{ blog_entry.content.featured_image }}" alt="{{ blog_entry.content.title }}">
+              <p class="uk-margin-top">{{ blog_entry.content.title }} <span class="uk-float-right uk-text-muted">{{blog_entry.content.date|date:'%b %d, %Y'}}</span></p>
+              {% if blog_entry.content.subtitle != blank %}
+                <p>{{blog_entry.content.subtitle}}</p>
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="uk-width-medium-1-4">
+        {% set blogitems from stories starts_with:'blog/', per_page: 6, sort_by:'random():asc', filter_by:'{"component":"blog_entry"}' %}
+        {% for blog_entry in blogitems.data %}
+          <ul class="uk-list">
+            <li>
+              <a class="uk-display-block uk-link-reset" href="/{{blog_entry.full_slug}}">
+                <img class="lazyload" src="{{ blog_entry.content.featured_image }}" alt="{{ blog_entry.content.title }}">
+                <p class="uk-margin-top">{{ blog_entry.content.title }}</p>
+              </a>
+            </li>
+          </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'random_products' %}

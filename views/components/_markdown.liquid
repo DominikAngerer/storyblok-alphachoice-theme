@@ -1,4 +1,4 @@
 {{blok._editable}}
-<div class="markdown">
+<div class="markdown" style="{% if blok.margin != blank %}margin:{{blok.margin}}{% endif %}{% if blok.padding != blank %}padding:{{blok.padding}}{% endif %}">
   {{blok.markdown|markdown}}
 </div>
