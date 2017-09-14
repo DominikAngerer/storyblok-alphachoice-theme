@@ -1,0 +1,17 @@
+.newsletter {
+  // background: $highlight-color;
+  background: #F8F8F8;
+  input {
+    width: 100%;
+    padding: 14px 15px;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #000;
+  }
+  [type="submit"] {
+    color: #fff;
+  }
+}
