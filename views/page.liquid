@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
+  {% set global from story id:'global' %}
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Storyblok">
@@ -69,7 +72,6 @@
   <link rel="preload" id="stylesheet" href="{{ 'assets/css/below.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
 </head>
 <body>
-  {% set global from story id:'global' %}
 
   {% include 'icons' %}
   
