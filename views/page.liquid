@@ -74,8 +74,8 @@
 <body>
 
   {% include 'icons' %}
-  
   <main id="main" role="main">
+    {% include 'mobile_header' %}
     {% include 'header' %}
     {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>

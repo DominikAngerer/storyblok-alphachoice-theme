@@ -1,9 +1,19 @@
 {{blok._editable}}
-<section class="home_header" style="background-image:url('{{blok.background|resize:'1600x0'}}')">
+<section id="{{blok._uid}}" class="home_header" style="background-image:url('{{blok.background|resize:'1600x0'}}')">
+  {% if blok.text_color != blank %}
+  <style>
+    #{{blok._uid}} .home_header__headline, #{{blok._uid}} .home_header__sub, #{{blok._uid}} .home_header__sub * {
+      color: {{blok.text_color}} !important;
+    }
+    #{{blok._uid}} .home_header__sub p em:after {
+      border-color: {{blok.text_color}} !important;;
+    }
+  </style>
+  {% endif %}
   <div class="uk-container uk-container-center">
     <div class="uk-grid">
       <div class="uk-width-medium-1-2 uk-margin-top">
-        <h1 class="home_header__headline">{{blok.headline|replace: ' ', '<br>'}}</h1>
+        <h1 class="home_header__headline" >{{blok.headline|replace: ' ', '<br>'}}</h1>
         <div class="home_header__sub">
           {{blok.subheadline|markdown}}
         </div>

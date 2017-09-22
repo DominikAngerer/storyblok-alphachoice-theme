@@ -1,0 +1,13 @@
+.mobile_header {
+  background: rgb(34,34,34);
+  .mobile_header__navigation {
+    li a {
+      color: #fff;
+      display:block;
+      padding-top: 30px;
+    }
+    &:last-child a {
+      padding-bottom: 20px;
+    }
+  }
+}

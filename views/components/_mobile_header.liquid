@@ -1,0 +1,13 @@
+<header class="mobile_header uk-hidden">
+  <div class="uk-container uk-container-center">
+      <nav>
+          <ul class="uk-list mobile_header__navigation uk-clearfix">
+            <li><a class="uk-link-reset" target="_blank" href="https://www.amazon.de/gp/cart/view.html/ref=nav_cart">{% include 'icon' with type: 'add-to-cart' %} {{ 'shopping-bag' | label:'de-labels'}}</a></li>
+            {% for header_link in global.content.header_links reversed %}
+              <li><a class="uk-link-reset" href="{{header_link.link | url}}">{{header_link.label}}</a></li>
+            {% endfor %}
+          </ul>
+      </nav>
+    </div>
+  </div>
+</header>

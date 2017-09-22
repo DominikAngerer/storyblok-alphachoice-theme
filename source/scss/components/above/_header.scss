@@ -9,6 +9,9 @@
   @media (max-width: 780px) {
     background-image:none!important;
   }
+  &.header--mobile-open {
+    margin-top:214px;
+  }
 }
 
 .header + * {
@@ -36,4 +39,10 @@
       font-size: 28px;
     }
   }  
+}
+
+.header__open_mobile {
+  position: absolute;
+  right: 15px;
+  top: 34px;
 }
