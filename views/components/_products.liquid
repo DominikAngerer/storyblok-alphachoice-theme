@@ -1,36 +1,16 @@
-{% set products from stories starts_with:'products', per_page: 4, is_startpage: false %}
-<hr>
+{% set prod from stories starts_with:'products', per_page: 25, is_startpage: false %}
+{{blok._editable}}
 <section class="featured_products uk-margin-large">
   <div class="uk-container uk-container-center">
     <p class="text--muted">{{blok.above}}</p>
     <h2>{{blok.headline}}</h2>
-    <div class="uk-grid uk-grid-small">
-      
-      <div class="uk-push-2-3 uk-width-medium-1-3">
-
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            {% for product in products.data %}
-            <div class="swiper-slide">
-              <a class="featured_products__mega_image" href="/{{product.full_slug}}"><img class="uk-width-1-1 lazyload" src="{{product.content.featured_image|resize:'39x68'}}" data-src="{{product.content.featured_image|resize:'393x686'}}" alt="{{product.name}}"></a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="uk-visible-small uk-margin-top"></div>
-      </div>
-      
-      <div class="uk-pull-1-3 uk-width-medium-2-3">
-        <ul class="uk-grid uk-grid-small">
-          {% for product in products.data %}
-          <li class="uk-width-medium-1-2">
-            {% include 'product_card' with product: product %}
-          </li>
-          {% endfor %}
-        </ul>
-      </div> 
-    
-    </div>
+    <ul class="uk-grid uk-grid-small">
+      {% for product in prod.data %}
+      <li class="uk-width-medium-1-3">
+        {% include 'product_card' with product: product %}
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
 <script type="application/ld+json">
@@ -39,7 +19,7 @@
   "@type":"ItemList",
   "itemListElement":[
   {%- assign i = 1 -%}
-  {%- for product in products.data -%}
+  {%- for product in prod.data -%}
       {%- for product_variation in product.content.variations -%} 
         {%- if product_variation.size == 'large' or product_variation.size == 'small' -%}{
             "@type":"ListItem",

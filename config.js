@@ -12,7 +12,7 @@ module.exports = {
     apiKey: require('./token'),
     basePath: 'views',
     quickstartToken: '',
-    environment: 'dev',
+    environment: 'live',
     uploadDone: function(res) {
       if (res.file.indexOf('.liquid') > -1 && res.file.indexOf('_above_fold_css.liquid') <= -1) {
         browserSync.reload()

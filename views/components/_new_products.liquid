@@ -3,12 +3,15 @@
     <p class="text--muted">{{blok.above}}</p>
     <h2>{{blok.headline}}</h2>
     <ul class="uk-grid uk-grid-small">
-      {% set products from stories starts_with:'products', per_page: 3 %}
+      {% set products from stories starts_with:'products', per_page: 3, is_startpage: false %}
       {% for product in products.data %}
       <li class="uk-width-medium-1-3">
         {% include 'product_card' with product: product %}
       </li>
       {% endfor %}
     </ul>
+    <div class=" uk-text-right">
+      <a class="button" href="/products">{{'all-products'|label:'de-labels'|default:'All Products'}}</a>
+    </div>
   </div>
 </section>
